@@ -1,0 +1,8 @@
+
+2015/02/26
+
+working on a big number class for practice C++ language.
+
+the parts that need to finish:
+constructors of using long & double as input.(flaot part could wait)
+operators need to be implemented.

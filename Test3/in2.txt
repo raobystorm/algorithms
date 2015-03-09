@@ -1,0 +1,31 @@
+4
+
+main foo
+5
+main 2 foo baz
+foo 2 qux qux
+bar 3 qux foo foo
+baz 3 foo qux bar
+qux 0
+
+first third
+3
+first 1 second
+second 1 third
+third 0
+
+a f
+6
+a 2 b c
+b 1 d
+c 2 d e
+d 1 f
+e 1 f
+f 0
+
+a d
+4
+a 10 b b b b b b b b b b
+b 10 c c c c c c c c c c
+c 10 d d d d d d d d d d
+d 0

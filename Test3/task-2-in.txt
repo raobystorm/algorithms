@@ -1,0 +1,228 @@
+20
+
+main foo
+5
+main 2 foo baz
+foo 2 qux qux
+bar 3 qux foo foo
+baz 3 foo qux bar
+qux 0
+
+first third
+3
+first 1 second
+second 1 third
+third 0
+
+a f
+6
+a 2 b c
+b 1 d
+c 2 d e
+d 1 f
+e 1 f
+f 0
+
+a d
+4
+a 10 b b b b b b b b b b
+b 10 c c c c c c c c c c
+c 10 d d d d d d d d d d
+d 0
+
+kxfmaebizrkhpcir gnbxstafv
+2
+kxfmaebizrkhpcir 2 gnbxstafv gnbxstafv
+gnbxstafv 0
+
+ntiv ajj
+2
+ajj 0
+ntiv 10 ajj ajj ajj ajj ajj ajj ajj ajj ajj ajj
+
+uebnffx jpvjagaobllzheww
+2
+uebnffx 8 jpvjagaobllzheww jpvjagaobllzheww jpvjagaobllzheww jpvjagaobllzheww jpvjagaobllzheww jpvjagaobllzheww jpvjagaobllzheww jpvjagaobllzheww
+jpvjagaobllzheww 0
+
+av tvhn
+20
+etbliuhvlgrazd 2 acirszjz ihhmtunpwt
+fjxjgholjl 2 row gprunyk
+nfbrszfv 3 vqge xdpopphqxg vznv
+qnl 1 ejnbwcgyutcxu
+yhwignfhpnexqd 0
+kxpxbcivfbzjamzn 2 nfbrszfv gprunyk
+vznv 0
+tvhn 0
+acirszjz 0
+vqge 1 siiwejjmfrjs
+ihhmtunpwt 4 undxidd vznv ejnbwcgyutcxu yhwignfhpnexqd
+bdnclitdtccxnnlv 3 vqge xdpopphqxg ejnbwcgyutcxu
+av 7 qnl bdnclitdtccxnnlv etbliuhvlgrazd kxpxbcivfbzjamzn kxpxbcivfbzjamzn ihhmtunpwt bdnclitdtccxnnlv
+ejnbwcgyutcxu 0
+undxidd 0
+siiwejjmfrjs 0
+row 0
+gprunyk 3 tvhn tmrqjcnzjuelym row
+xdpopphqxg 2 siiwejjmfrjs fjxjgholjl
+tmrqjcnzjuelym 0
+
+epfv huuhm
+20
+hxuhltwjinsvad 1 fitnobra
+b 4 nfngnhytncay yo geexvjnag orfigmyhv
+y 2 lqp saffgumhq
+jqaydkvwppyjcxmz 1 huuhm
+lixtfrasnwbxlvtl 1 orfigmyhv
+geexvjnag 3 njzoznwnqjlnjzn lqp saffgumhq
+nfngnhytncay 0
+lqp 1 yo
+fitnobra 1 htutr
+oblwwamyr 1 otiuqefdgljjh
+yo 0
+vrlbaoo 2 oblwwamyr yo
+orfigmyhv 0
+huuhm 0
+njzoznwnqjlnjzn 0
+epfv 6 hxuhltwjinsvad lixtfrasnwbxlvtl kgrtk y b y
+htutr 1 otiuqefdgljjh
+saffgumhq 2 jqaydkvwppyjcxmz oblwwamyr
+kgrtk 4 jqaydkvwppyjcxmz vrlbaoo vrlbaoo oblwwamyr
+otiuqefdgljjh 0
+
+otdrw skamzxiuthdyhp
+20
+m 0
+q 0
+mkzoiffewggftwru 0
+xsmxvvwxhdylaeva 1 xgn
+esilaqf 2 ybhzblfbcveh oelv
+otdrw 4 dxdculxquaobrnn eisxm krfipkdfkammp qyveanupsk
+ei 3 rrrazk esilaqf eisxm
+xzvxyfv 0
+ybhzblfbcveh 0
+dxdculxquaobrnn 1 esilaqf
+xgn 1 skamzxiuthdyhp
+e 0
+oelv 0
+qyveanupsk 5 m mkzoiffewggftwru ei dxdculxquaobrnn m
+weowpbajlnl 0
+eisxm 2 xgn weowpbajlnl
+krfipkdfkammp 4 xzvxyfv ybemyj xsmxvvwxhdylaeva ybhzblfbcveh
+skamzxiuthdyhp 0
+ybemyj 1 e
+rrrazk 1 q
+
+vfqsrebto yzvypzibtngtrcah
+5
+jmcanaj 3 fy yzvypzibtngtrcah yzvypzibtngtrcah
+vhrwpoaqekju 3 fy fy yzvypzibtngtrcah
+vfqsrebto 17 fy jmcanaj vhrwpoaqekju vhrwpoaqekju fy jmcanaj vhrwpoaqekju vhrwpoaqekju jmcanaj jmcanaj vhrwpoaqekju vhrwpoaqekju vhrwpoaqekju jmcanaj vhrwpoaqekju fy fy
+fy 2 yzvypzibtngtrcah yzvypzibtngtrcah
+yzvypzibtngtrcah 0
+
+tyajrqdqtzsx ljpv
+5
+ljpv 0
+qqs 2 pjxubisgawvf ljpv
+pjxubisgawvf 1 ljpv
+dvac 3 ljpv qqs qqs
+tyajrqdqtzsx 6 qqs dvac ljpv pjxubisgawvf dvac pjxubisgawvf
+
+sfeqafso ugtxapjveyyptc
+5
+dfytyzoy 1 ugtxapjveyyptc
+sfeqafso 3 dfytyzoy hkja hkja
+hkja 4 jqlvc dfytyzoy dfytyzoy dfytyzoy
+ugtxapjveyyptc 0
+jqlvc 0
+
+iexyqhkxxfhgxuz v
+3
+qwxrxrhlfucmyo 20 v v v v v v v v v v v v v v v v v v v v
+v 0
+iexyqhkxxfhgxuz 20 qwxrxrhlfucmyo qwxrxrhlfucmyo v qwxrxrhlfucmyo qwxrxrhlfucmyo qwxrxrhlfucmyo qwxrxrhlfucmyo v v qwxrxrhlfucmyo qwxrxrhlfucmyo v qwxrxrhlfucmyo qwxrxrhlfucmyo qwxrxrhlfucmyo v v qwxrxrhlfucmyo v qwxrxrhlfucmyo
+
+vsvexacisotbuxe fsowzuvwnouilyh
+7
+vt 9 kcygzxwnteyr oych oych cpgtkjnhnwwnyfvf kcygzxwnteyr cpgtkjnhnwwnyfvf fsowzuvwnouilyh kcygzxwnteyr kcygzxwnteyr
+cpgtkjnhnwwnyfvf 5 blptusibjerhg kcygzxwnteyr oych oych oych
+vsvexacisotbuxe 15 cpgtkjnhnwwnyfvf vt vt cpgtkjnhnwwnyfvf cpgtkjnhnwwnyfvf vt vt kcygzxwnteyr fsowzuvwnouilyh cpgtkjnhnwwnyfvf blptusibjerhg kcygzxwnteyr kcygzxwnteyr vt blptusibjerhg
+kcygzxwnteyr 4 fsowzuvwnouilyh blptusibjerhg blptusibjerhg blptusibjerhg
+blptusibjerhg 0
+oych 3 fsowzuvwnouilyh fsowzuvwnouilyh kcygzxwnteyr
+fsowzuvwnouilyh 0
+
+q tsjxpeyyezviit
+6
+ndblerog 6 oyofjl ql ql ql tsjxpeyyezviit ql
+ql 4 oyofjl tsjxpeyyezviit oyofjl oyofjl
+tsjxpeyyezviit 0
+oyofjl 2 tsjxpeyyezviit tsjxpeyyezviit
+ujhievsyhabxbhy 7 tsjxpeyyezviit ndblerog ndblerog ndblerog ql oyofjl ql
+q 20 ndblerog ujhievsyhabxbhy ql tsjxpeyyezviit ndblerog ql ujhievsyhabxbhy ndblerog oyofjl ujhievsyhabxbhy ujhievsyhabxbhy ujhievsyhabxbhy ql ndblerog oyofjl ql ql oyofjl ujhievsyhabxbhy ujhievsyhabxbhy
+
+wztqonbyqyq uccscgcqkxc
+15
+eabwz 0
+qtabehetbdwhbqx 2 mcsloxmgnih qeedpcyimlygxmcb
+psxbex 0
+kmwdemsikjg 0
+ycligmsxk 4 kmwdemsikjg eabwz oquit oquit
+oquit 2 qeedpcyimlygxmcb eabwz
+lagafgye 3 psxbex uqgha kmwdemsikjg
+mcsloxmgnih 1 uqgha
+wztqonbyqyq 9 jwtrinq uqgha mcsloxmgnih oquit qtabehetbdwhbqx wcwyae ycligmsxk ycligmsxk oquit
+uqgha 1 jsmmasmei
+jsmmasmei 1 uccscgcqkxc
+wcwyae 3 uccscgcqkxc mcsloxmgnih qeedpcyimlygxmcb
+jwtrinq 0
+uccscgcqkxc 0
+qeedpcyimlygxmcb 1 lagafgye
+
+orqytvaxsmlvbxpv o
+15
+o 0
+sg 1 aw
+ukafadxkmbpm 0
+kge 1 dksjncyocwwzczkc
+debaty 0
+dksjncyocwwzczkc 0
+aw 1 d
+rzupuuqpi 3 aw ukafadxkmbpm aw
+vgblarjto 0
+yqana 5 d kktea o vgblarjto dksjncyocwwzczkc
+vzytoiyxefdor 7 kge yqana sg pffvk ukafadxkmbpm rzupuuqpi pffvk
+kktea 5 debaty dksjncyocwwzczkc d o dksjncyocwwzczkc
+orqytvaxsmlvbxpv 7 o vgblarjto ukafadxkmbpm rzupuuqpi vzytoiyxefdor sg vzytoiyxefdor
+pffvk 2 ukafadxkmbpm vgblarjto
+d 0
+
+mcspjztmtfmnxv wmvskx
+12
+lykmrygzktwhgct 1 wmvskx
+atshygpnkuybq 1 lykmrygzktwhgct
+rubuwuuycr 4 wmvskx lykmrygzktwhgct lykmrygzktwhgct avkixzehdmgodd
+ehbfgcas 0
+wmvskx 0
+vdcnab 3 avkixzehdmgodd wbnizhuwtg wbnizhuwtg
+nzhm 7 atshygpnkuybq wbnizhuwtg vdcnab ehbfgcas atshygpnkuybq emaoga vdcnab
+sblk 9 lykmrygzktwhgct wbnizhuwtg atshygpnkuybq nzhm ehbfgcas nzhm rubuwuuycr wmvskx nzhm
+wbnizhuwtg 0
+mcspjztmtfmnxv 17 ehbfgcas emaoga vdcnab atshygpnkuybq rubuwuuycr nzhm sblk sblk sblk nzhm nzhm atshygpnkuybq atshygpnkuybq nzhm rubuwuuycr sblk sblk
+emaoga 3 ehbfgcas ehbfgcas avkixzehdmgodd
+avkixzehdmgodd 1 lykmrygzktwhgct
+
+universally make
+10
+and 4 worlds useful worlds the
+make 0
+universally 8 and information information and accessible information and make
+it 0
+accessible 1 it
+worlds 1 it
+information 6 make accessible organize organize organize organize
+useful 1 the
+the 0
+organize 4 useful worlds worlds and
