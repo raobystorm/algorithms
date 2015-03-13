@@ -10,28 +10,30 @@ using namespace std;
 
 typedef list<int>::iterator			idx;
 
-list<int>* merge(list<int>* left, int& leftLength, list<int>* right, int& rightLength){
+list<int> merge(list<int> left, int& leftLength, list<int> right, int& rightLength){
 
 	list<int> newList;
-	idx leftElem = (*left).begin(), rightElem = (*right).begin();
+	idx leftElem = left.begin(), rightElem = right.begin();
 	for (int i = 0; i < leftLength + rightLength; i++){
 	
-		if (leftElem == (*left).end()){
+		if (leftElem == left.end()){
 		
-			while (rightElem != (*right).end()){
+			while (rightElem != right.end()){
 			
 				newList.push_back(*rightElem);
 				rightElem++;
 			}
+			return newList;
 		}
 
-		if (rightElem == (*right).end()){
+		if (rightElem == right.end()){
 		
-			while (leftElem != (*left).end()){
+			while (leftElem != left.end()){
 
 				newList.push_back(*leftElem);
 				leftElem++;
 			}
+			return newList;
 		}
 
 		if (*leftElem > *rightElem) { 
@@ -44,16 +46,16 @@ list<int>* merge(list<int>* left, int& leftLength, list<int>* right, int& rightL
 		}
 	}
 
-	return &newList;
+	return newList;
 }
 
-list<int>* mergeSort(idx* start, int length){
+list<int> mergeSort(idx* start, int length){
 
 	if (length <= 1) {
 	
 		list<int> newList;
 		newList.push_back(**start);
-		return &newList;
+		return newList;
 	}
 
 	idx leftStart, rightStart;
@@ -64,8 +66,8 @@ list<int>* mergeSort(idx* start, int length){
 	for (int i = 0; i < leftLength; i++) rightStart++;
 	rightLength = length - leftLength;
 
-	list<int>* left = mergeSort(&leftStart, leftLength);
-	list<int>* right = mergeSort(&rightStart, rightLength);
+	list<int> left = mergeSort(&leftStart, leftLength);
+	list<int> right = mergeSort(&rightStart, rightLength);
 
 	return merge(left, leftLength, right, rightLength);
 }
@@ -78,7 +80,7 @@ int main()
 	ifstream fin("in.txt");
 	ofstream fout("out.txt");
 
-	list<int> sortList, *sorted;
+	list<int> sortList, sorted;
 
 	while (1){
 	
@@ -94,7 +96,7 @@ int main()
 		idx start = sortList.begin();
 		sorted = mergeSort(&start, n);
 
-		idx sortedElem = (*sorted).begin();
+		idx sortedElem = sorted.begin();
 		for (int i = 0; i < n; i++){
 		
 			fout << *sortedElem << " ";

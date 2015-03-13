@@ -53,7 +53,6 @@ int main()
 	ofstream output("output2-extra.txt");
 
 	string entry, obj, tmpfunc, current;
-	stack<int> funcs;
 
 	int n, m, l, tmpidx, curridx, objidx;
 	input >> n;

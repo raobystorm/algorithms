@@ -15,7 +15,7 @@ int main()
 
 	ofstream fout("out.txt");
 
-	int n = 50;
+	int n = 500000;
 
 	fout << n << " ";
 
