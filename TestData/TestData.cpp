@@ -11,7 +11,7 @@ using namespace std;
 
 int main()
 {
-	srand(time(NULL));
+	/*srand(time(NULL));
 
 	ofstream fout("out.txt");
 
@@ -24,6 +24,12 @@ int main()
 		fout << (int)rand() << " ";
 	}
 
-	fout << endl << 0;
+	fout << endl << 0;*/
+
+	int w = 5;
+
+	int res = (++w)*(++w)*(++w);
+
+	return 0;
 }
 
