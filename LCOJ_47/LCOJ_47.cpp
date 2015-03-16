@@ -42,12 +42,12 @@ public:
 
 		if (j == num.size() - 1){
 
-			checkPush(res, num);
+			res.push_back(num);
 		}
 
 		for (; j <= num.size() - 1; j++){
 
-			swap(num[i], num[j]);
+			if(num[i] != num[j]) swap(num[i], num[j]);
 			PermuteRecur(res, num, i + 1);
 			swap(num[i], num[j]);
 		}
@@ -70,7 +70,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	vector<int> nums = { 1, 1, 2 };
 	Solution s;
 
-	vector<vector<int>> res = s.permute(nums);
+	vector<vector<int>> res = s.permuteUnique(nums);
 	return 0;
 }
 
