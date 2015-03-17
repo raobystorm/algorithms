@@ -1,12 +1,10 @@
-// LCOJ_140.cpp : Defines the entry point for the console application.
+// LCOJ_139.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
-#include <fstream>
-#include <stack>
-#include <vector>
 #include <string>
 #include <unordered_set>
+#include <stack>
 
 using namespace std;
 
@@ -59,7 +57,7 @@ public:
 		return true;
 	}
 
-	vector<string> wordBreak(string s, unordered_set<string> &dict) {
+	bool wordBreak(string s, unordered_set<string> &dict) {
 
 		stack<int> nodes;						// when we have a guess, put idx of that word into this record
 		stack<string> str_nodes;				// record the sentence that is matched so forth
@@ -68,7 +66,7 @@ public:
 		int i = 0, j = 1;						// start and end pos of current word search
 		bool finish = false;
 
-		if (!checkSuffix(&s, dict)) return res;	// branch-cutting? get rid of the cases that would fail but exetremely costy
+		if (!checkSuffix(&s, dict)) return false;	// branch-cutting? get rid of the cases that would fail but exetremely costy
 
 		while (!finish){
 
@@ -77,10 +75,7 @@ public:
 				if (dict.find(s.substr(i, j - i)) == dict.end()) continue;
 				else if (j == s.length()){
 					// a match here, and we have a new sentence with space
-					*ans += s.substr(i, j - i);
-					res.push_back(*ans);
-					ans = new string("");
-					if (nodes.size()) break;
+					return true;
 				}
 				else{
 					// a matched word, but not reach the end of original string	
@@ -102,29 +97,11 @@ public:
 			}
 			else break;
 		}
-		return res;
 	}
 };
 
-int main()
+int _tmain(int argc, _TCHAR* argv[])
 {
-	ifstream fin("in.txt");
-	ofstream fout("out.txt");
-	
-	string ss;
-	unordered_set<string> dict = { "aaaa", "aa", "a" };
-
-	Solution s;
-
-	while (fin >> ss){
-	
-		vector<string> sents = s.wordBreak(ss, dict);
-
-		for (int i = 0; i < sents.size(); i++)
-			fout << sents[i] << endl;
-		fout << endl;
-	}
-
 	return 0;
 }
 
