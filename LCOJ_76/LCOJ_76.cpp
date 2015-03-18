@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 using namespace std;
-
+/*
 class Solution {
 public:
 
@@ -98,79 +98,47 @@ public:
 		else res = "";
 		return res;
 	}
-};
+};*/
 
-void reset(int hash[]){
 
-	for (int i = 0; i < 128; i++){
-
-		hash[i] = -1;
-	}
-}
-
-void setCheckList(int* check, char* T){
-	
-	for (int i = 0; i < 128; i++) check[i] = -1;
+void setCheckList(bool check[], int list[], char* T){
 
 	for (int i = 0; i < strlen(T); i++){
+
+		list[T[i] - 'a']++;
+		check[T[i] - 'a'] = true;
+	}
+}
+
+bool checkLeftMove(int list[], bool check[]){
+
+	for (int i = 0; i < 26; i++){
 	
-		if (check[T[i]] == -1) check[T[i]] = 1;
-		else check[T[i]]++;
+		if (!check[i]) continue;
+		else if (list[i]>0) return false;
 	}
+	return true;
 }
 
-void updateCount(int hash[]){
+bool checkList(int list[], bool check[]){
 
-	for (int i = 0; i < 128; i++){
-
-		if (hash[i] != -1) hash[i]++;
+	for (int i = 0; i < 26; i++){
+	
+		if (!check[i]) continue;
+		if (list[i] > 0) return false;
 	}
-}
-
-void updateMin(int* hash, int* idx, int* idxTmp, int* min, int len){
-
-	int tmpMax = -1;
-	int tmpMin = 65536;
-
-	for (int i = 0; i < 128; i++){
-
-		if (hash[i] > tmpMax) tmpMax = hash[i];
-	}
-
-	for (int i = 0; i < 128; i++){
-
-		if (hash[i] != -1 && hash[i] < tmpMin) tmpMin = hash[i];
-	}
-
-	if ((tmpMax - tmpMin) < *min) {
-		*min = tmpMax - tmpMin;
-		*idx = *idxTmp;
-	}
-}
-
-bool checkAppear(int* hash, int* list){
-
-	for (int i = 0; i < 128; i++){
-
-		if (list[i] == -1) continue;
-		if (list[i]) return false;
-		if (hash[i] == -1) return false;
-	}
-
 	return true;
 }
 
 char *minWindow(char *S, char *T) {
 
-	int hash[128];
-	int checkList[128] = { 0 }, equal = true;
+	int list[26] = { 0 };
+	bool equal = true, moveLeft = false, check[26] = {false};
 
-	reset(hash);
+	int min, left = 0, right = 0, idx;
 
-	int min;
-
-	if (S[0] == '\0') return "";
-	if (T[0] == '\0') return "";
+	if (!strlen(S)) return "";
+	if (!strlen(T)) return "";
 	if (strlen(T) > strlen(S)) return "";
 
 	if (strlen(T) == strlen(S)){
@@ -181,43 +149,62 @@ char *minWindow(char *S, char *T) {
 				break;
 			}
 		if (equal) return T;
+		else return "";
 	}
 
 	char* res;
 
-	min = (1 << 31) - 1;
+	min = 1 << 30;
 
-	int idx = 0, idxMin = 0;
+	setCheckList( check, list, T);
 
-	setCheckList(checkList, T);
+	for (; left < strlen(S) && right < strlen(S); moveLeft?left++:right++){
 
-	for (; S[idx] != '\0'; idx++){
+		if (!moveLeft){
+		
+			if (!check[S[right] - 'a']) continue;
+			list[S[right] - 'a']--;
+			if (checkLeftMove(list, check)){
+			
+				if (min > right - left){
 
-		updateCount(hash);
+					min = right - left;
+					idx = left;
+				}
+				
+				moveLeft = true;
+			}
+		}
+		else{
+		
+			if (check[S[left - 1] - 'a']) list[S[left - 1] - 'a']++;
+			if (check[S[left] - 'a']) {
+			
+				if (list[S[left] - 'a'] < 0) continue;
+				if (checkList(list, check) && min > right - left){
 
-		if (checkList[S[idx] - '\0'] == -1) continue;
+					min = right - left;
+					idx = left;
+				}
 
-		if (checkList[S[idx] - '\0']>0)checkList[S[idx] - '\0']--;
-
-		if (!checkList[S[idx] - '\0']) hash[S[idx] - '\0'] = 0;
-		     
-		if (checkAppear(hash, checkList)) 
-			updateMin(hash, &idxMin, &idx, &min, strlen(T));
+				moveLeft = false;
+			}
+		}
 	}
 
-	if (!checkAppear(hash, checkList)) return "";
+	if (min > strlen(T)) return "";
 
 	res = (char*)malloc((min + 1)*sizeof(char));
 
-	memcpy(res, S + idxMin - min, (min + 1)*sizeof(char));
+	memcpy(res, S + idx, (min + 1)*sizeof(char));
 
 	return res;
 }
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	char s[] = "acbbaca";
-	char T[] = "aba";
+	char s[] = "ab";
+	char T[] = "";
 	char* res = minWindow(s, T);
 
 	//string s = Solution().minWindow("bbaa", "aba");
