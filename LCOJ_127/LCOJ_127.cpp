@@ -19,17 +19,17 @@ public:
 		int step = 1, idx, branch = 1, count = 0;
 		char c, cc;
 		// actually this hash is useless, just for recoginizing the end location efficiently
-		unordered_map<string, short> hash;
+		unordered_set<string>::iterator itr, enditr;
 		// damn edges
 		if(dict.empty()) return 0;
 		if (start.size() == 1 && end.size() == 1 && dict.find(start) != dict.end() && dict.find(end) != dict.end()) return 2;
 		if (dict.find(end) == dict.end()) { dict.insert(end);}
 
 		dict.erase(start);
-		hash[end] = 2;
 		// this queue is the key
 		queue<string*> Q;
 		Q.push(&start);
+		enditr = dict.find(end);
 		// basically, Dijkstra
 		while (Q.size()){
 			curr = Q.front();
@@ -41,19 +41,17 @@ public:
 					cc = 'a' + j;
 					if (cc == c) continue;
 					(*curr)[i] = cc;
-					if (dict.find(*curr)!=dict.end())
-					{
-						next = new string(*curr);
-						if (hash[*curr] != 2) {
+					itr = dict.find(*curr);
+					if (itr == dict.end()) continue;
+					if (itr != enditr){
 
-							Q.push(next);
-							dict.erase(*curr);
-							hash.erase(*curr);
-							count++;
-						}
-						else{
-							return step+1;
-						}
+						next = new string(*curr);
+						Q.push(next);
+						dict.erase(*curr);
+						count++;
+					}
+					else{
+						return step+1;
 					}
 				}
 				(*curr)[i] = c;

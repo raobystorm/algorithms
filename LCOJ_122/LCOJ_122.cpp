@@ -12,6 +12,7 @@ int maxProfit(int prices[], int n){
 	
 		if (prices[i] - prices[i - 1] > 0) prof += prices[i] - prices[i - 1];
 	}
+	return prof;
 }
 
 int _tmain(int argc, _TCHAR* argv[])
