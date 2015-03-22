@@ -47,7 +47,7 @@ int main()
 {
 	int n, tmp;
 
-	ifstream fin("in.txt");
+	ifstream fin("random.txt");
 	ofstream fout("out.txt");
 
 	while (1){
