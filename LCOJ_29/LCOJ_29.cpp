@@ -19,7 +19,6 @@ int divide(int dividend, int divisor) {
 	else if (b == 1) {
 		return sign * a;
 	}
-
 	long result = 0;
 	int i = 0;
 	while (a >= b) {

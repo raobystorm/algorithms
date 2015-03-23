@@ -12,7 +12,7 @@ int maxProfit(int prices[], int n, int k) {
 		hold2 = hold2 > release1 - prices[i] ? hold2 : release1 - prices[i];		// The maximum if we've just buy  2nd stock so far.
 		release1 = release1> hold1 + prices[i] ? release1 : hold1 + prices[i];		// The maximum if we've just sold 1nd stock so far.
 		hold1 = hold1 > -prices[i] ? hold1 : -prices[i];							// The maximum if we've just buy  1st stock so far. 
-	}
+	}                                     
 	return release2;
 }
 

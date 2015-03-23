@@ -3,6 +3,8 @@
 
 #include "stdafx.h"
 #include <time.h>
+#include <unordered_set>
+using namespace std;
 
 inline int moveRecur(int n){
 
@@ -12,16 +14,18 @@ inline int moveRecur(int n){
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	int n, res;
-	clock_t start, end;
-	while (1){
-		
-		scanf_s("%d", &n);
-		start = clock();
-		res = moveRecur(n);
-		end = clock();
-		printf_s("The result is:%d, using %f secs.\n", res, (double)end - start);
+	int hash1[26] = { 0 }, hash2[26] = { 0 };
+	hash1[0]++; hash1[2]++;
+	hash2[0]++; hash2[2]++;
+
+	unordered_set<int *> s;
+	s.insert(hash1);
+	//s.insert(hash2);
+
+	if (s.find(hash2) == s.find(hash1)){
+	
+		return 1;
 	}
-	return 0;
+	else return 0;
 }
 
