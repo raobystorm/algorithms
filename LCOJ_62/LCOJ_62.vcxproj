@@ -11,10 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{31807C37-01A5-4152-9262-E89D4E4C9E8B}</ProjectGuid>
+    <ProjectGuid>{EE00C1B1-5B84-46CF-9FCF-5485B44E304C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>LCOJ</RootNamespace>
-    <ProjectName>LCOJ_188</ProjectName>
+    <RootNamespace>LCOJ_62</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -84,7 +83,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LCOJ.cpp" />
+    <ClCompile Include="LCOJ_62.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
