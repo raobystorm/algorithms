@@ -1,6 +1,6 @@
 package LCOJ_2;
-import java.io.*;
-import java.util.*;
+import java.util.Scanner;
+import javaxt.io.*;
 
 public class Solution {
 	
@@ -13,6 +13,7 @@ public class Solution {
 		ListNode res = curr;
 
 		int incre = 0;
+		
 		
 		while(true){
 			
