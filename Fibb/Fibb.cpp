@@ -3,56 +3,65 @@
 
 #include "stdafx.h"
 #include <iostream>
-#include "windows.h"
 
 using namespace std;
 
-inline __int64 Fibb(int n){
+const int m = 19999997;
 
-	if (n == 0) return 0;
-	if (n == 1) return 1;
+class matrix
+{
+public:
+	matrix();
+	__int64 data[2][2];
+	matrix operator *(const matrix &rig);
+	matrix & operator =(const matrix &rig);
+};
 
-	__int64 a, b, res;
-	a = 1;
-	b = 0;
-	res = 0;
-
-	for (int i = 2; i <= n; i++){
-	
-		res = a + b;
-		b = a;
-		a = res;
-	}
-
-	return res;
+matrix::matrix()
+{
+	data[0][0] = 1;
+	data[0][1] = 1;
+	data[1][0] = 1;
+	data[1][1] = 0;
 }
 
-int _tmain(int argc, _TCHAR* argv[])
+matrix matrix::operator *(const matrix &rig)
 {
-	__int64 res = 0;
-	int n = 0;
-	DWORD start, stop;
+	matrix ans;
+	ans.data[0][0] = (data[0][0] * rig.data[0][0] + data[0][1] * rig.data[1][0]);
+	ans.data[0][1] = (data[0][0] * rig.data[0][1] + data[0][1] * rig.data[1][1]);
+	ans.data[1][0] = (data[1][0] * rig.data[0][0] + data[1][1] * rig.data[1][0]);
+	ans.data[1][1] = (data[1][0] * rig.data[0][1] + data[1][1] * rig.data[1][1]);
+	return ans;
+}
 
-	while (1){
-
-		_wsystem(L"CLS");
-
-		cout << "Please input the number to calculate for Fibonacci: \n";
-		cin >> n;
-		if (n < 0) break;
-		
-		start = GetTickCount();
-		res = Fibb(n);
-		stop = GetTickCount();
-
-		cout << "The result is " << res << ", calculated in " << (stop - start) * 1.0 / 1000 << " secs.\n";
-
-		_wsystem(L"pause");
-
+matrix &matrix::operator =(const matrix &rig)
+{
+	for (int i = 0; i <= 1; i++)
+	{
+		for (int j = 0; j <= 1; j++)
+		{
+			data[i][j] = rig.data[i][j];
+		}
 	}
+	return *this;
+}
 
-	_wsystem(L"pause");
-
+int main()
+{
+	long n;
+	cin >> n;
+	matrix k, ans;
+	while (n>0)
+	{
+		if (n % 2 == 1)
+		{
+			ans = ans*k;
+		}
+		k = k*k;
+		n = n / 2;
+	}
+	cout << (ans.data[1][1] % 19999997) << endl;
+	system("pause");
 	return 0;
 }
-
