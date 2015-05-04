@@ -44,7 +44,7 @@ int main() {
         outputs.insert(tmp);
       }
 
-      modules[tmpin] =  &outputs;
+      modules[tmpin] = &outputs;
     }    
     
     while (!signals.empty()) 
@@ -52,8 +52,15 @@ int main() {
       tmpin = signals.front();
       signals.pop();
       
-      if(modulus.find(tmpin) != modules.end())
+      if(modules.find(tmpin) != modules.end() && modules[tmpin]->size())
       {
+        list<int>::iterator itr = *modules[tmpin];
+        while(itr != modules[tmpin]->end())
+        {
+          signals.insert(*itr);
+          // TODO unfinished here
+          itr++;
+        }
         
     }
 
