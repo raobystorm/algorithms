@@ -11,7 +11,7 @@ class Solution {
 public:
 
 	int lookup(char hash[], char c){
-		int i = 0; 
+		int i = 0;
 		while (hash[i] != '\0'){
 			if (hash[i] == c) return i + 1;
 			i++;
@@ -26,19 +26,17 @@ public:
 
 		int *smap = (int*)malloc(sizeof(int)*s.size());
 		int *tmap = (int*)malloc(sizeof(int)*t.size());
-		int i = 0;
-		while(s[i] != '\0' && t[i] != '\0'){
+
+		for (int i = 0; i < s.size(); i++){
 
 			int sidx = lookup(shash, s[i]);
 			int tidx = lookup(thash, t[i]);
-
 			if (sidx != -1)	smap[i] = sidx;
-
 			else{
 
 				int j = 0; while (shash[j] != '\0') j++;
 				shash[j] = s[i];
-				smap[i] = j+1;
+				smap[i] = j + 1;
 			}
 
 			if (tidx != -1)	tmap[i] = tidx;
@@ -46,13 +44,13 @@ public:
 
 				int j = 0; while (thash[j] != '\0') j++;
 				thash[j] = t[i];
-				tmap[i] = j+1;
+				tmap[i] = j + 1;
 			}
 		}
 
 		for (int i = 0; i < s.size(); i++)
 			if (smap[i] != tmap[i]) return false;
-		
+
 		return true;
 	}
 };
