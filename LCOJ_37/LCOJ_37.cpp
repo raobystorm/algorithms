@@ -58,11 +58,30 @@ int _tmain(int argc, _TCHAR* argv[])
 	for (int i = 0; i < 9; i++)
 		boardd[i] = vector<char>(9, '.');
 
-	string s[9] = { "..9748...", "7........", ".2.1.9...", "..7...24.", ".64.1.59.", ".98...3..", "...8.3.2.", "........6", "...2759.." };
-	for (int i = 0; i < 9; i++)
-		for (int j = 0; j < 9; j++)
-			boardd[i][j] = s[i][j];
+	printf("The sudoku is:\n");
 
+	string s[9] = { "..9748...", "7........", ".2.1.9...", "..7...24.", ".64.1.59.", ".98...3..", "...8.3.2.", "........6", "...2759.." };
+	for (int i = 0; i < 9; i++){
+
+		for (int j = 0; j < 9; j++){
+			boardd[i][j] = s[i][j];
+			printf("%c", boardd[i][j]);
+		}
+		printf("\n");
+	}
+	printf("\n");
+		
 	Solution().solveSudoku(boardd);
+
+	printf("The solution is:\n");
+	
+	for (int i = 0; i < 9; i++){
+
+		for (int j = 0; j < 9; j++){
+
+			printf("%c", boardd[i][j]);
+		}
+		printf("\n");
+	}
 	return 0;
 }
