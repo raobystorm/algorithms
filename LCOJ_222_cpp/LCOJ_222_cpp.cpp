@@ -20,7 +20,7 @@ public:
 		if (n == 0) return 1;
 		return calcExp(n - 1) * 2;
 	}
-
+	
 	void Count(TreeNode* node, int& leftCount, int& rightCount){
 
 		if (node == nullptr) { leftCount = 0; rightCount = 0; return; }
@@ -37,7 +37,7 @@ public:
 			right = right->right;
 		}
 	}
-
+	// Recursively track the unblanced node and calculate the height of that node
 	int trackUnbalanced(TreeNode* node, int& leftCount, int& rightCount){
 		if (leftCount == rightCount){
 			return calcExp(leftCount) - 1;
