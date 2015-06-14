@@ -11,6 +11,44 @@ using namespace std;
 #define wid 11
 #define MAX 102
 
+#define MAX 250
+
+int max(char a, char b){
+	return a > b ? a : b;
+}
+int min(char a, char b){
+	return a < b ? a : b;
+}
+
+int maximalSquare(char** matrix, int matrixRowSize, int matrixColSizex) {
+
+	if (matrixRowSize == 0 || matrixColSizex == 0) return 0;
+
+	char col[MAX][MAX] = { 0 };
+	char row[MAX][MAX] = { 0 };
+	char dp[MAX][MAX] = { 0 };
+	int res = 0;
+
+	for (int i = 1; i <= matrixRowSize; i++){
+		for (int j = 1; j <= matrixColSizex; j++){
+
+			if (matrix[i - 1][j - 1] == '0'){
+				col[i][j] = 0; row[i][j] = 0; dp[i][j] = 0;
+			}
+			else{
+				if (i > 0) col[i][j] = col[i - 1][j] + 1;
+				row[i][j] = row[i][j - 1] + 1;
+				if (i > 1 && j > 1 && matrix[i - 2][j - 2] == '1' && (min(col[i][j], row[i][j]) >= dp[i - 1][j - 1] + 1))
+					dp[i][j] = dp[i - 1][j - 1] + 1;
+				else if (dp[i - 1][j - 1] != 0) dp[i][j] = min(col[i][j], row[i][j]);
+				else dp[i][j] = 1;
+			}
+			res = max(res, dp[i][j]);
+		}
+	}
+	return res*res;
+}
+
 class Solution {
 public:
 	int max(char a, char b){
@@ -49,6 +87,7 @@ public:
 		return res*res;
 	}
 };
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	/*char matrix[hei][wid] = {
