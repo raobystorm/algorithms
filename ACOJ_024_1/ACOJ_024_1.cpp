@@ -86,6 +86,16 @@ void task3(){
 	return;
 }
 
+unsigned long long quickpow(unsigned long long base, unsigned long long n){
+	unsigned long long ans = 1;
+	while (n){
+		if (n % 2 == 1) ans = ans * base % MOD;
+		n /= 2;
+		base = base * base % MOD;
+	}
+	return ans;
+}
+
 void task4(){
 	unsigned long long a, b, r, c, phi;
 	double dphi;
@@ -94,14 +104,11 @@ void task4(){
 	cin >> A >> B >> C;
 	a = (B%MOD*C%MOD - A%MOD*B%MOD) % MOD;
 	b = (A%MOD*C%MOD - B%MOD*C%MOD + A%MOD*B%MOD) % MOD;
-	dphi = pow(b, MOD - 2);
-	phi = dphi;
-	phi %= MOD;
-	c = a*phi%MOD;
+	c = (a*quickpow(b, MOD - 2)) % MOD;
 
 	a = (B%MOD*C%MOD - A%MOD*C%MOD);
 	b = (A%MOD*B%MOD - B%MOD*C%MOD + A%MOD*C%MOD);
-	r = a*((unsigned long long)pow(b, MOD - 2));
+	r = (a*quickpow(b, MOD - 2)) % MOD;
 
 	cout << r << " " << c << endl;
 	return ;
@@ -109,6 +116,23 @@ void task4(){
 
 int main()
 {
-	
+	unsigned long long a, b, r, c, phi;
+	double dphi;
+	int A, B, C;
+
+	cin >> A >> B >> C;
+	a = (B%MOD*C%MOD - A%MOD*B%MOD) % MOD;
+	b = (A%MOD*C%MOD - B%MOD*C%MOD + A%MOD*B%MOD) % MOD;
+	c = (a*quickpow(b, MOD - 2)) % MOD;
+
+	a = (B%MOD*C%MOD - A%MOD*C%MOD);
+	b = (A%MOD*B%MOD - B%MOD*C%MOD + A%MOD*C%MOD);
+	r = (a*quickpow(b, MOD - 2)) % MOD;
+
+	if (r > 99999999) r = 0;
+	if (c > 99999999) c = 0;
+
+	cout << r << " " << c << endl;
+	return 0;
 }
 
