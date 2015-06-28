@@ -6,6 +6,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <stack>
 
 using namespace std;
 
@@ -24,38 +25,69 @@ void StringPermute(std::string& s, int i){
 	}
 }
 
-// a method for all combinations without duplicates
-template<typename _iter>
-void combination(_iter _array, int len){
+inline void reverse(string& s, int i, int j){
 
-	if (len < 2) return;
+	while (i < j){
+		swap(s[i++], s[j--]);
+	}
+}
 
-	bool end = false;
+void combination(string& s, int len){
+
+	sort(s.begin(), s.end());
 	while (true){
+	
+		cout << s << endl;
+		int i, j;
+		for (i = s.size() - 2; i >= 0; i--){
+		
+			if (s[i] < s[i + 1]) break;
+			else if (i == 0) return;
+		}
+		for (j = s.size() - 1; j > i; j--){
+			if (s[j] > s[i]) break;
+		}
+		swap(s[i], s[j]);
+		reverse(s, i+1 ,s.size() - 1);
+	}
+}
 
-		for (int i = 0; i < len; i++)
-			cout << _array[i] << " ";
-		cout << endl;
+template<typename _elem>
+void reverse(_elem* array, int i, int j){
+	while (i < j){
+		swap(array[i++], array[j--]);
+	}
+}
 
+template<typename _itr>
+void comb(_itr* _array, int len){
+
+	sort(&(_array[0]), &(_array[len - 1]));
+	while (true){
+	
+		{
+			for (int i = 0; i < len; i++)
+				cout << _array[i] << " ";
+			cout << endl;
+		}
 		int i, j;
 		for (i = len - 2; i >= 0; i--){
+		
 			if (_array[i] < _array[i + 1]) break;
 			else if (i == 0) return;
 		}
-
 		for (j = len - 1; j > i; j--){
-			if (_array[j] > _array[i])break;
+			if (_array[j] > _array[i]) break;
 		}
 		swap(_array[i], _array[j]);
-		for (int k = i + 1, l = len - 1; k < l; k++, l--)
-			swap(_array[k], _array[l]);
+		reverse(_array, i + 1, len - 1);
 	}
 }
 
 int _tmain(int argc, _TCHAR* argv[])
 {
 	std::string ss;
-	vector<int> vec;
+	int* vec;
 	int n, tmp;
 
 	while (1){
@@ -69,15 +101,12 @@ int _tmain(int argc, _TCHAR* argv[])
 		if (ss == "exit") return 0;*/
 
 		cin >> n;
-		vec.clear();
-		for (int i = 0; i < n; i++){
-			
-			cin >> tmp;
-			vec.push_back(tmp);
-		}
+		vec = (int*)malloc(sizeof(int)*n);
+		
+		for (int i = 0; i < n; i++)
+			cin >> vec[i];
 
-		sort(vec.begin(), vec.end());
-		combination(vec, n);
+		comb(vec, n);
 
 		_wsystem(L"pause");
 	}
