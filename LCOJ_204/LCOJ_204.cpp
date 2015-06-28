@@ -30,4 +30,3 @@ int _tmain(int argc, _TCHAR* argv[])
 	int res = countPrimes(6);
 	return 0;
 }
-
