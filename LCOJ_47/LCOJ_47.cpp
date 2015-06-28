@@ -4,70 +4,47 @@
 #include "stdafx.h"
 
 #include <vector>
-#include <string>
 #include <iostream>
-#include <functional>
+#include <algorithm>
 
 using namespace std;
 
 class Solution {
 public:
-
-	void checkPush(vector<vector<int>>& res, vector<int>& num){
-
-		bool next = false;
-	
-		for (int i = res.size()-1; i >= 0; i--){
-		
-			next = false;
-			for (int j = res[i].size()-1; j >= 0; j--){
-			
-				if (res[i][j] != num[j]) { 
-
-					next = true;
-					break; 
-				}
-			}
-
-			if (next) continue;
-			return;
-		}
-
-		res.push_back(vector<int>(num));
-	}
-	
-	void PermuteRecur(vector<vector<int>>& res, vector<int>& num, int i){
-
-		int j = i;
-
-		if (j == num.size() - 1){
-
-			res.push_back(num);
-		}
-
-		for (; j <= num.size() - 1; j++){
-
-			if(num[i] != num[j]) swap(num[i], num[j]);
-			PermuteRecur(res, num, i + 1);
-			swap(num[i], num[j]);
-		}
+	void reverse(vector<int>& v, int i, int j){
+		while (i < j){ swap(v[i++], v[j--]); }
 	}
 
-	vector<vector<int>> permuteUnique(vector<int> &num) {
+	vector<vector<int>> permuteUnique(vector<int> &a) {
 
-		if (!num.size()) return vector<vector<int>>();
+		if (a.size() <= 1) return vector<vector<int>>(1, a);
 
 		vector<vector<int>> res;
 
-		PermuteRecur(res, num, 0);
+		sort(a.begin(), a.end());
+		while (true){
 
+			res.push_back(a);
+		
+			int i, j;
+			for (i = a.size() - 2; i >= 0; i--){
+				if (a[i] < a[i + 1]) break;
+				else if (i == 0) return res;
+			}
+
+			for (j = a.size() - 1; j > i; j--){
+				if (a[j] > a[i]) break;
+			}
+			swap(a[i], a[j]);
+			reverse(a, i + 1, a.size() - 1);
+		}
 		return res;
 	}
 };
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	vector<int> nums = { 1, 1, 2 };
+	vector<int> nums = { 1, 2, 3 };
 	Solution s;
 
 	vector<vector<int>> res = s.permuteUnique(nums);
