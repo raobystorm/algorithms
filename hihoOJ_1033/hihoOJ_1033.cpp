@@ -4,104 +4,86 @@
 #include "stdafx.h"
 
 #include <iostream>
-#include <fstream>
-#include <sstream>
 #include <string>
-#include <unordered_map>
 
-#define MOD 1000000007
+using namespace std;
 
-using namespace	std;
+#define ll long long int
 
-inline int crossAdd(unsigned long long& a){
+const int mod = 1000000007;
 
-	int count = 0;
-	int pos = 0, neg = 0;
-	unsigned long long aa = a;
+struct node{
+	ll s, n;
+};
+// dp is 
+node dp[21][20][400];
 
-	while (aa){
+int bits[21];
+ll base[21];
 
-		if (count % 2) neg += aa % 10;
-		else pos += aa % 10;
-
-		count++;
-		aa /= 10;
+//len数位长度, dig是首个数字, begin_zero表示之前是否已经开始变号， end_flag表示下一位枚举时是否枚举到bit[len-2]，否则就枚举到9， sum是要求的数字和   
+node dfs(int len, int dig, bool begin_zero, bool end_flag, int sum){
+	node t;
+	t.s = 0, t.n = 0;
+	//超过边界值   
+	if (len <= 0 || len >= 20 || dig < 0 || dig > 9 || sum < -200 || sum >= 200)
+		return t;
+	//返回已有的DP结果，即记忆化搜索   
+	if (!end_flag && dp[len][dig + (begin_zero ? 0 : 10)][sum + 200].n != -1)
+		return dp[len][dig + (begin_zero ? 0 : 10)][sum + 200];
+	//长度只有一位，就不需要枚举下一位了，直接讨论返回即可   
+	if (len == 1){
+		if (dig != sum)
+			return t;
+		t.n = 1, t.s = sum;
+		return t;
 	}
-
-	if (count % 2) return pos - neg;
-	else return neg - pos;
+	//开始枚举下一位的数字   
+	int end = end_flag ? bits[len - 2] : 9;
+	int newsum = dig - sum;
+	node tmp;
+	for (int j = 0; j <= end; j++){
+		if (!begin_zero){
+			tmp = dfs(len - 1, j, j != 0, end_flag && (j == end), sum);
+		}
+		else{
+			tmp = dfs(len - 1, j, true, end_flag && (j == end), newsum);
+		}
+		//将tmp的值累加到t上  
+		t.n += tmp.n;
+		t.s = ((t.s + tmp.s) % mod + ((tmp.n * dig) % mod * base[len - 1]) % mod) % mod;
+	}
+	if (!end_flag) dp[len][dig + (begin_zero ? 0 : 10)][sum + 200] = t;
+	return t;
 }
 
-inline int log(unsigned long long a){
-	int i = 0;
-	while (a){
-		i++;
-		a /= 10;
+int solve(ll n, int s){
+	if (n <= 0)
+		return 0;
+	int l = 0;
+	for (int i = 0; i < 21; i++)
+		bits[i] = 0;
+	while (n){
+		bits[l++] = n % 10;
+		n /= 10;
 	}
-	return i;
+	return dfs(l + 1, 0, false, true, s).s;
 }
 
-inline unsigned long long upperBound(unsigned long long& ll){
+int main(){
+	ll l, r, s;
+	node t;
+	t.n = -1;
+	t.s = 0;
+	for (int i = 0; i < 21; i++)
+		for (int j = 0; j < 20; j++)
+			for (int k = 0; k < 400; k++) 
+				dp[i][j][k] = t;
 
-	unsigned long long rr = 1;
-	int c = log(ll);
-	while (c--) rr *= 10;
-	return --rr;
-}
-
-int main()
-{
-	unsigned long long l, r, ll, rr, ans = 0, base, tmp;
-	int k, res = 0, t;
-	cin >> l >> r >> k;
-	ofstream out("out.txt");
-
-	ll = l;
-	rr = r;
-	t = log(rr) - log(ll) + 1;
-	base = log(ll);
-	tmp = ll;
-
-	while (t--){
-
-		while (crossAdd(ll) != k) ll++;
-		rr = upperBound(ll) < r ? upperBound(ll): r;
-		while (crossAdd(rr) != k) rr--;
-
-		while (ll < rr){
-			if (crossAdd(ll) == k){
-				ans += ll%MOD;
-				ans %= MOD;
-				tmp = ll;
-			}
-			ll += 11;
-		}
-		ll = rr;
-		rr += 11;
-		while (ll < rr){
-			if (ll > r) break;
-			if (crossAdd(ll) == k){
-				ans += ll%MOD;
-				ans %= MOD;
-			}
-			ll ++;
-		}
-		ll = rr;
-		if (ll > r) break;
-	}
-
-	/*ifstream in("out.txt");
-	int tmp, prev;
-	in >> prev;
-	in >> tmp;
-	while (in.eof()){
-		if (tmp - prev != 11){
-			cout << tmp << endl;
-		}
-		prev = tmp;
-		in >> tmp;
-	}*/
-	cout << ans << endl;
+	base[0] = 1;
+	for (int i = 1; i < 21; i++)
+		base[i] = (base[i - 1] * 10) % mod;
+	cin >> l >> r >> s;
+	cout << (solve(r, s) - solve(l - 1, s) + mod) % mod << endl;
 	return 0;
 }
-
