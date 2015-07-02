@@ -42,7 +42,6 @@ int main()
 		return 0;
 	}
 
-	// For this problem, sort in reverse order would help to cut off many branches
 	sort(score, score + n, comp);
 	cin >> q;
 
