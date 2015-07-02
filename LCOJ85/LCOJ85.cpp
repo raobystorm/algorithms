@@ -3,130 +3,48 @@
 
 #include "stdafx.h"
 #include <vector>
+#include <algorithm>
 
 using namespace std;
-
-#define MAX 		10000
-
 class Solution {
 public:
-	int maximalRectangle(vector<string> &matrix) {
+	int maximalRectangle(vector<vector<char>>& matrix) {
 
-		int numRows = matrix.size();
-		int numColumns = matrix[0].size();
-
-		int maxRect = 0, left = 0, curr = 0;
-		bool leftUpZero = false, skip = false;
-		int prev[MAX] = { 0 };
-
-		for (int i = 0; i < numRows; i++){
-
-			left = 1;
-			for (int j = 0; j < numColumns; j++, left = 1){
-
-				/*if (i == 0){
-				
-					if (matrix[i][j] == '0') { 
-						prev[j] = j > 0 ? prev[j - 1] : 0;
-						left = 1; 
-					}
-					else { prev[j] += left; left++; }
-					continue;
-				}
-
-				if (j == 0){
-				
-					if (matrix[i][j] == '1') {
-					
-						prev[j]++;
-						continue;
-					}
-					if (matrix[i - 1][j] == '0') break;
-				}
-
-				if (matrix[i][j] == '0'){
-				
-					if (i > 0 && matrix[i - 1][j] == '1') break;
-					if (matrix[i - 1][j - 1] == '0') { prev[j] = prev[j - 1] > prev[j] ? prev[j - 1] : prev[j]; }
-					if (matrix[i - 1][j] == '0' && matrix[i][j - 1] != '0') { prev[j] = prev[j - 1]; }
-					if (matrix[i][j - 1] == '0' && matrix[i - 1][j] != '0') { prev[j] = prev[j]; }
-					left = 1;
-					maxRect = maxRect > prev[j] ? maxRect : prev[j];
+		if (matrix.empty()) return 0;
+		const int m = matrix.size();
+		const int n = matrix[0].size();
+		vector<int> left(n, 0);
+		vector<int> right(n, n);
+		vector<int> height(n, 0);
+		int res = 0;
+		for (int i = 0; i < m; i++){
+			int curr_left = 0, curr_right = n;
+			for (int j = 0; j < n; j++){
+				if (matrix[i][j] == '1'){
+					height[j]++;
+					left[j] = max(left[j], curr_left);
 				}
 				else{
-				
-					if (matrix[i - 1][j] == '0' && matrix[i][j - 1] != '0') { prev[j] = prev[j - 1] + 1; continue; }
-					if (matrix[i][j - 1] == '0' && matrix[i - 1][j] != '0') { prev[j] = prev[j] + 1; continue; }
-					if (matrix[i - 1][j - 1] == '0') { prev[j] = prev[j] > prev[j - 1] ? prev[j] + 1 : prev[j - 1] + 1; continue; }
-					prev[j] += left;
-					left++;
-					maxRect = maxRect > prev[j] ? maxRect : prev[j];
-				}*/
-				
-				if (matrix[i][j] == '0') {
-
-					left = 0;
-					curr = 0;
-					prev[j] = prev[j] > prev[j - 1] ? prev[j] : prev[j - 1];
-					if (i > 0 && matrix[i - 1][j] == '1') break;
-				}
-				else if (!leftUpZero){
-					// if this is not a 0
-					if (!prev[j] && i > 0) leftUpZero = true;
-					prev[j] = prev[j] + left;
-					maxRect = maxRect > prev[j] ? maxRect : prev[j];
-					left++;
-				}
-				else{
-					// a situation that not a 0, but the left up cornor is 0
-					left = 1;
-					leftUpZero = false;
-					if (!prev[j] && i > 0) leftUpZero = true;
-					prev[j] = (prev[j - 1] + 1 > prev[j] + 1) ? prev[j - 1] + 1 : prev[j] + 1;
-					maxRect = maxRect > prev[j] ? maxRect : prev[j];
+					height[j] = 0;
+					left[j] = 0;
+					curr_left = j + 1;
 				}
 			}
+			for (int j = n - 1; j >= 0; j--){
+				if (matrix[i][j] == '1') right[j] = min(right[j], curr_right);
+				else{
+					right[j] = n;
+					curr_right = j;
+				}
+			}
+			for (int j = 0; j < n; j++){
+
+				res = max(res, (right[j] - left[j]) * height[j]);
+			}
 		}
-		return maxRect;
+		return res;
 	}
 };
-
-int maximalRectangle(char **matrix, int numRows, int numColumns) {
-
-	int maxRect = 0, left = 0, curr = 0;
-	bool leftUpZero = true;
-	int prev[MAX] = { 0 };
-
-	for (int i = 0; i < numRows; i++){
-
-		left = 0;
-		for (int j = 0; j < numColumns; j++){
-
-			if (matrix[i][j] == '0') {
-
-				left = 0;
-				curr = 0;
-				prev[j] = 0;
-			}
-			else if (!leftUpZero){
-				// if this is not a 0
-				left++;
-				if (!prev[j]) leftUpZero = true;
-				prev[j] = prev[j] + left;
-				maxRect = maxRect > prev[j] ? maxRect : prev[j];
-			}
-			else{
-				// a situation that not a 0, but the left up cornor is 0
-				left = 1;
-				leftUpZero = false;
-				if (!prev[j]) leftUpZero = true;
-				prev[j] = (prev[j - 1] + 1 > prev[j] + 1) ? prev[j - 1] + 1 : prev[j] + 1;
-				maxRect = maxRect > prev[j] ? maxRect : prev[j];
-			}
-		}
-	}
-	return maxRect;
-}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
