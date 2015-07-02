@@ -116,8 +116,7 @@ void task4(){
 
 int main()
 {
-	unsigned long long a, b, r, c, phi;
-	double dphi;
+	int a, b, r, c;
 	int A, B, C;
 
 	cin >> A >> B >> C;
@@ -128,9 +127,6 @@ int main()
 	a = (B%MOD*C%MOD - A%MOD*C%MOD);
 	b = (A%MOD*B%MOD - B%MOD*C%MOD + A%MOD*C%MOD);
 	r = (a*quickpow(b, MOD - 2)) % MOD;
-
-	if (r > 99999999) r = 0;
-	if (c > 99999999) c = 0;
 
 	cout << r << " " << c << endl;
 	return 0;
