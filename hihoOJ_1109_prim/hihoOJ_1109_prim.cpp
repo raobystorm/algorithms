@@ -10,6 +10,7 @@
 using namespace std;
 
 struct edge{
+	// we dont need info where this edge start from
 	int des;
 	short w;
 	edge(int j, int k) : des(j), w(k){}
@@ -25,7 +26,7 @@ int main()
 		res = 0;
 		count = 1;
 		vector<bool> visited(n, false);
-		// the first elem of the pair is the destination of this edge, second is the weight
+		// the hash cotainer, map[i] is the vector stores all edges started from node i
 		unordered_map<int, vector<edge>> map;
 		// use min heap to store the active edges we are searching
 		priority_queue<edge> edges;
@@ -41,16 +42,19 @@ int main()
 
 		i = 0;
 		visited[i] = true;
+		// prim algorithm
 		while (count < n){
-			// search the minimum edge that connects a visited vertice with an unvisited one
+			// add all the edges out from current node i into the heap
 			for (auto j : map[i]){
 				//if (!visted[j]) edges.push(edge(j, vedge[i][j]));
 				if (!visited[j.des]) edges.push(j);
 			}
+			// pick up a minimum edge from the heap
+			// if the minimum edge is connected to a visited node, ignore it
 			while (visited[edges.top().des]) {
 				edges.pop();
 			}
-
+			// update the value, add new node to the visited list, set it as current node
 			res += edges.top().w;
 			i = edges.top().des;
 			visited[i] = true;
