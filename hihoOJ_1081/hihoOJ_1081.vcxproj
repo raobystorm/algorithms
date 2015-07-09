@@ -14,7 +14,7 @@
     <ProjectGuid>{822F4EA8-BE5C-4246-9FE6-CFF390A13EA1}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>hihoOJ_1081</RootNamespace>
-    <ProjectName>hihoOJ_1081_shortestPathWithSort</ProjectName>
+    <ProjectName>hihoOJ_1081_dijkstra</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
