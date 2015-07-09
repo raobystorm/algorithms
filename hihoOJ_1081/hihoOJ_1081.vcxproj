@@ -11,10 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{62E38278-B5F2-4331-8C41-F942EF7EB252}</ProjectGuid>
+    <ProjectGuid>{822F4EA8-BE5C-4246-9FE6-CFF390A13EA1}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>hihoOJ_1033</RootNamespace>
-    <ProjectName>hihoOJ_1033_digitDP</ProjectName>
+    <RootNamespace>hihoOJ_1081</RootNamespace>
+    <ProjectName>hihoOJ_1081_shortestPathWithSort</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -84,7 +84,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="hihoOJ_1033.cpp" />
+    <ClCompile Include="hihoOJ_1081.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

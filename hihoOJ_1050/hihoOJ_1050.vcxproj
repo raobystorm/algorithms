@@ -14,6 +14,7 @@
     <ProjectGuid>{313D5A02-7311-43B9-A03A-8DFD217373B5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>hihoOJ_1050</RootNamespace>
+    <ProjectName>hihoOJ_1050_tree_traversal</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
