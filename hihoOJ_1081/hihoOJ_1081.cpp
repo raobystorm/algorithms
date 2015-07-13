@@ -14,16 +14,20 @@ int map[MAX][MAX], dis[MAX], vis[MAX] = { 0 };
 
 void dijk(int s)
 {
+	// initialize condition, neccessary
 	for (int i = 1; i <= n; i++) dis[i] = map[s][i];
 	vis[s] = 1; dis[s] = 0;
+	// just loop for n times
 	for (int i = 1; i<n; i++)
 	{
+		// find the minimum unvisited node
 		int min = INF, pos;
 		for (int j = 1; j <= n; j++)
 			if (!vis[j] && dis[j] < min)
 				min = dis[pos = j];
 		if (min == INF) break;
 		vis[pos] = 1;
+		// for current node update distance to the unvisited nodes
 		for (int j = 1; j <= n; j++)
 			if (!vis[j] && dis[pos] + map[pos][j] < dis[j])
 				dis[j] = dis[pos] + map[pos][j];
