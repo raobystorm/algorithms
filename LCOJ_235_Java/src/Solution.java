@@ -10,8 +10,4 @@ public class Solution {
             return lowestCommonAncestor(root.left, p, q);
         }else return root;
     }
-    public static void main(String args[]){
-
-        System.out.println("hello world!");
-    }
 }
