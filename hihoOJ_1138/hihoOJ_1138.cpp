@@ -3,22 +3,23 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include <vector>
 
 using namespace std;
-#define MAX 100002
-#define INF 0x7f
 
-int x[MAX], y[MAX], d[MAX];
+struct node{
+	int x, y;
+	node(int xx = 0, int yy = 0) :x(xx), y(yy){}
+};
 
 int main()
 {
-	int n;
+	int n, x, y;
 	cin >> n;
-	memset(x, INF, sizeof(x));
-	memset(y, INF, sizeof(y));
-	memset(d, INF, sizeof(d));
+	vector<node> nodes(n);
+	
 	for (int i = 0; i < n; i++){
-		scanf_s("%d%d", &x[i], &y[i]);
+		scanf_s("%d%d", &nodes[i].x, &nodes[i].y);
 	}
 
 	return 0;
