@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StringPermute", "Test\Test.vcxproj", "{89687B6C-E9F2-47F0-9014-6B9A3E1DA993}"
 EndProject
@@ -222,6 +222,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LCOJ_231", "LCOJ_231\LCOJ_231.vcxproj", "{0B74F4E9-C863-4ED1-AA36-570CEC9785DC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LCOJ_234", "LCOJ_234\LCOJ_234.vcxproj", "{8984AEAD-E94E-4E12-8AB8-D86846C4C469}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LCOJ_239_Heap", "LCOJ_239_Heap\LCOJ_239_Heap.vcxproj", "{9B64B002-F8EA-47DB-A3EC-0CC1A9202F08}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LCOJ_236_Tree", "LCOJ_236_Tree\LCOJ_236_Tree.vcxproj", "{8631898D-299F-4A4C-8B64-4C332177F257}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1299,6 +1303,26 @@ Global
 		{8984AEAD-E94E-4E12-8AB8-D86846C4C469}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{8984AEAD-E94E-4E12-8AB8-D86846C4C469}.Release|Win32.ActiveCfg = Release|Win32
 		{8984AEAD-E94E-4E12-8AB8-D86846C4C469}.Release|Win32.Build.0 = Release|Win32
+		{9B64B002-F8EA-47DB-A3EC-0CC1A9202F08}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{9B64B002-F8EA-47DB-A3EC-0CC1A9202F08}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{9B64B002-F8EA-47DB-A3EC-0CC1A9202F08}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{9B64B002-F8EA-47DB-A3EC-0CC1A9202F08}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9B64B002-F8EA-47DB-A3EC-0CC1A9202F08}.Debug|Win32.Build.0 = Debug|Win32
+		{9B64B002-F8EA-47DB-A3EC-0CC1A9202F08}.Release|Any CPU.ActiveCfg = Release|Win32
+		{9B64B002-F8EA-47DB-A3EC-0CC1A9202F08}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{9B64B002-F8EA-47DB-A3EC-0CC1A9202F08}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{9B64B002-F8EA-47DB-A3EC-0CC1A9202F08}.Release|Win32.ActiveCfg = Release|Win32
+		{9B64B002-F8EA-47DB-A3EC-0CC1A9202F08}.Release|Win32.Build.0 = Release|Win32
+		{8631898D-299F-4A4C-8B64-4C332177F257}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{8631898D-299F-4A4C-8B64-4C332177F257}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{8631898D-299F-4A4C-8B64-4C332177F257}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{8631898D-299F-4A4C-8B64-4C332177F257}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8631898D-299F-4A4C-8B64-4C332177F257}.Debug|Win32.Build.0 = Debug|Win32
+		{8631898D-299F-4A4C-8B64-4C332177F257}.Release|Any CPU.ActiveCfg = Release|Win32
+		{8631898D-299F-4A4C-8B64-4C332177F257}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{8631898D-299F-4A4C-8B64-4C332177F257}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{8631898D-299F-4A4C-8B64-4C332177F257}.Release|Win32.ActiveCfg = Release|Win32
+		{8631898D-299F-4A4C-8B64-4C332177F257}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
