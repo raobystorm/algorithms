@@ -19,7 +19,7 @@ struct TreeNode {
 
 class Solution {
 public:
-	/*stack<TreeNode*> dfs(TreeNode* root, TreeNode* obj){
+	/*stack<TreeNode*> bfs(TreeNode* root, TreeNode* obj){
 		stack<TreeNode*> stk;
 		queue<TreeNode*> q;
 		unordered_set<TreeNode*> vis;

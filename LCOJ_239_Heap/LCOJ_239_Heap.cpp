@@ -11,14 +11,20 @@ using namespace std;
 
 class Solution {
 public:
+	// implementation of data structure monotonic queue
+	// all the elements in the queue is always sorted
 	vector<int> maxSlidingWindow(vector<int>& nums, int k) {
 		deque<int> dq;
 		vector<int> ans;
-		for (int i = 0; i<nums.size(); i++) {
+		for (int i = 0; i < nums.size(); i++) {
+			// if the maximum is the element going out
 			if (!dq.empty() && dq.front() == i - k) dq.pop_front();
+			// pop all the elements smaller than the coming number
 			while (!dq.empty() && nums[dq.back()] < nums[i])
 				dq.pop_back();
+			// push the coming one into the queue
 			dq.push_back(i);
+			// build up the answer vector for this problem
 			if (i >= k - 1) ans.push_back(nums[dq.front()]);
 		}
 		return ans;
