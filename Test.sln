@@ -233,6 +233,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LCOJ_242_anagram", "LCOJ_24
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BinaryIndexedTree", "BinaryIndexedTree\BinaryIndexedTree.vcxproj", "{FAB7CC83-BC33-45EB-9291-B4F21889ECB0}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LCOJ_223", "LCOJ_223\LCOJ_223.vcxproj", "{ED8E1D07-B709-4B83-A0BC-5A55CE171CE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1359,11 +1361,18 @@ Global
 		{FAB7CC83-BC33-45EB-9291-B4F21889ECB0}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{FAB7CC83-BC33-45EB-9291-B4F21889ECB0}.Release|Win32.ActiveCfg = Release|Win32
 		{FAB7CC83-BC33-45EB-9291-B4F21889ECB0}.Release|Win32.Build.0 = Release|Win32
+		{ED8E1D07-B709-4B83-A0BC-5A55CE171CE1}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{ED8E1D07-B709-4B83-A0BC-5A55CE171CE1}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{ED8E1D07-B709-4B83-A0BC-5A55CE171CE1}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{ED8E1D07-B709-4B83-A0BC-5A55CE171CE1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ED8E1D07-B709-4B83-A0BC-5A55CE171CE1}.Debug|Win32.Build.0 = Debug|Win32
+		{ED8E1D07-B709-4B83-A0BC-5A55CE171CE1}.Release|Any CPU.ActiveCfg = Release|Win32
+		{ED8E1D07-B709-4B83-A0BC-5A55CE171CE1}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{ED8E1D07-B709-4B83-A0BC-5A55CE171CE1}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{ED8E1D07-B709-4B83-A0BC-5A55CE171CE1}.Release|Win32.ActiveCfg = Release|Win32
+		{ED8E1D07-B709-4B83-A0BC-5A55CE171CE1}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal
