@@ -5,7 +5,7 @@ import xml.etree.ElementTree
 # the general name of the folder of bounding box
 bbFolderStr = "BoundingBox"
 # the size of processed image
-(width, height) = (224, 224)
+width, height = 224, 224
 
 # this is the location of the folder contains image folders
 imgFolder = "/media/raoby/UnixExt/ILSVRC2012/train"
@@ -21,17 +21,34 @@ def singleRevise(imgLoc, xmlFileLoc):
 	currImg = Image.open(imgLoc);
 	if currImg is not None:
 		w, h = currImg.size
-	root = xml.etree.ElementTree.parse(xmlFileLoc).getroot()
+	try:
+		root = xml.etree.ElementTree.parse(xmlFileLoc).getroot()
+		# should be careful for the case no bounding box found
+		if root is not None:
+			xmin = int(root.find("object").find("bndbox").find("xmin").text)
+			xmax = int(root.find("object").find("bndbox").find("xmax").text)
+			ymin = int(root.find("object").find("bndbox").find("ymin").text)
+			ymax = int(root.find("object").find("bndbox").find("ymax").text)
+			# because the coordinate for the xml and PIL is different, we need calculate
+			currImg = currImg.crop((xmin, h - ymax, xmax, h - ymin))
+	except IOError, e:
+		# many images are lack of bnb file, ignore the exception
+		pass
+
 	desImg = Image.new(currImg.mode, (width, height))
-	if root is not None:
-		xmin = int(root.find("object").find("bndbox").find("xmin").text)
-		xmax = int(root.find("object").find("bndbox").find("xmax").text)
-		ymin = int(root.find("object").find("bndbox").find("ymin").text)
-		ymax = int(root.find("object").find("bndbox").find("ymax").text)
-	currImg = currImg.crop((xmin, h - ymax, xmax, h - ymin))
-	ratio = min(width/w, height/h)
-	currImg = currImg.resize((width*ratio, height*ratio))
-	desImg.paste(currImg, (xmin, h - ymax, xmax, h - ymin))
+	
+	w, h = currImg.size
+	# discuss the situation separetely, keep the ratio of image unchange
+	if width*1.0/w < height*1.0/h:
+		ratio = width*1.0/w
+		currImg = currImg.resize((int(w*ratio), int(h*ratio)))
+		w, h = currImg.size
+		desImg.paste(currImg, (0, (height - h)/2))
+	else:
+		ratio = height*1.0/h
+		currImg = currImg.resize((int(w*ratio), int(h*ratio)))
+		w, h = currImg.size
+		desImg.paste(currImg, ((width - w)/2, 0))
 	desImg.save(imgLoc, "JPEG")
 
 
@@ -52,4 +69,4 @@ def ImageRevise(imgFolderLoc, bbFolderLoc):
 			xmlFileLoc = bbFolderLoc + "/" + folder + "/" + imgStr + ".xml"
 			singleRevise(currImgLoc, xmlFileLoc)
 
-singleRevise( "/media/raoby/UnixExt/ILSVRC2012/train/n02132136/n02132136_16.JPEG" ,"/media/raoby/UnixExt/ILSVRC2012/BoundingBox/n02132136/n02132136_16.xml")
+ImageRevise( '/media/raoby/UnixExt/ILSVRC2012/train', '/media/raoby/UnixExt/ILSVRC2012/BoundingBox')
