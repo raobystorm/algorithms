@@ -57,8 +57,10 @@ def ImageRevise(imgFolderLoc, bbFolderLoc):
 	# @param {imgFolderLoc} the string of folder contains all the folders of all classes
 	# @param {bbFolderLoc} the string of folder contains all the xml files for bouding boxes
 	# @return {errMsg} the results of the function or the exceptions
+	count = 0
 	for folder in os.listdir(imgFolderLoc):
-		print "ImageRevise is processing the class: " + folder
+		count = count + 1
+		print "ImageRevise is processing the class: " + folder + "(" + count + "/1000)"
 		folderLoc = imgFolderLoc + "/" + folder
 		imgList = os.listdir(folderLoc)
 		for imgStr in imgList:
