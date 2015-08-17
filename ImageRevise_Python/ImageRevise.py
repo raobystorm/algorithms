@@ -71,4 +71,5 @@ def ImageRevise(imgFolderLoc, bbFolderLoc):
 			xmlFileLoc = bbFolderLoc + "/" + folder + "/" + imgStr + ".xml"
 			singleRevise(currImgLoc, xmlFileLoc)
 
-ImageRevise( '/media/raoby/UnixExt/ILSVRC2012/train', '/media/raoby/UnixExt/ILSVRC2012/BoundingBox')
+singleRevise('','/media/raoby/UnixExt/ILSVRC2012/bnb')
+#ImageRevise( '/media/raoby/UnixExt/ILSVRC2012/train', '/media/raoby/UnixExt/ILSVRC2012/bnb')
