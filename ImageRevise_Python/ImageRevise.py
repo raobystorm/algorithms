@@ -8,17 +8,19 @@ bbFolderStr = "BoundingBox"
 width, height = 224, 224
 
 # this is the location of the folder contains image folders
-imgFolder = "/media/raoby/UnixExt/ILSVRC2012/train"
+imgSrcFolder = "/media/raoby/UnixExt/ILSVRC2012/TrainingSet"
+# this is the destination of the image files
+imgDstFolder = "/media/raoby/UnixExt/ILSVRC2012/train"
 # this is the location of the folder contians bounding boxes
-bbFolder = "/media/raoby/UnixExt/ILSVRC2012/BoundingBox"
+bbFolder = "/media/raoby/UnixExt/ILSVRC2012/bnb"
 
-def singleRevise(imgLoc, xmlFileLoc):
+def singleRevise(imgSrcLoc, imgDstLoc, xmlFileLoc):
 	# The function is used for revise single image
 	# @param {imgLoc} the location of target image
 	# @param {xmlFileLoc} the location of the bounding box of current image
 	# @return {errMsg} the results of the execution
 	xmin, xmax, ymin, ymax = 0, 0, 0, 0
-	currImg = Image.open(imgLoc);
+	currImg = Image.open(imgSrcLoc);
 	if currImg is not None:
 		w, h = currImg.size
 	try:
@@ -30,10 +32,13 @@ def singleRevise(imgLoc, xmlFileLoc):
 			ymin = int(root.find("object").find("bndbox").find("ymin").text)
 			ymax = int(root.find("object").find("bndbox").find("ymax").text)
 			# because the coordinate for the xml and PIL is different, we need calculate
-			currImg = currImg.crop((xmin, h - ymax, xmax, h - ymin))
+			currImg = currImg.crop((xmin, ymin, xmax, ymax))
 	except IOError, e:
-		# many images are lack of bnb file, ignore the exception
-		pass
+		try:
+			os.remove(imgDstLoc)
+		except OSError, ee:
+			pass
+		return
 
 	desImg = Image.new(currImg.mode, (width, height))
 	
@@ -49,27 +54,30 @@ def singleRevise(imgLoc, xmlFileLoc):
 		currImg = currImg.resize((int(w*ratio), int(h*ratio)))
 		w, h = currImg.size
 		desImg.paste(currImg, ((width - w)/2, 0))
-	desImg.save(imgLoc, "JPEG")
+	desImg.save(imgDstLoc, "JPEG")
 
 
-def ImageRevise(imgFolderLoc, bbFolderLoc):
+def ImageRevise(imgSrcFolder, imgDstFolder, bbFolderLoc):
 	# The function for all image pre-process
-	# @param {imgFolderLoc} the string of folder contains all the folders of all classes
+	# @param {imgSrcFolder} the string of folder contains all the folders of all classes
 	# @param {bbFolderLoc} the string of folder contains all the xml files for bouding boxes
 	# @return {errMsg} the results of the function or the exceptions
 	count = 0
-	for folder in os.listdir(imgFolderLoc):
+	for folder in os.listdir(imgSrcFolder):
 		count = count + 1
-		print "ImageRevise is processing the class: " + folder + "(" + count + "/1000)"
-		folderLoc = imgFolderLoc + "/" + folder
+		print "ImageRevise is processing the class: " + folder + "(" + str(count) + "/1000)"
+		folderLoc = imgSrcFolder + "/" + folder
+		dstFolder = imgDstFolder + "/" + folder
 		imgList = os.listdir(folderLoc)
 		for imgStr in imgList:
 			# processing one image of the class in {folder}
 			imgStr = imgStr[0 : imgStr.rfind(".")]
 			xmin, xmax, ymin, ymax = 0, 0, 0, 0
-			currImgLoc = folderLoc + "/" + imgStr + ".JPEG"
+			srcImgLoc = folderLoc + "/" + imgStr + ".JPEG"
+			dstImgLoc = dstFolder + "/" + imgStr + ".JPEG"
 			xmlFileLoc = bbFolderLoc + "/" + folder + "/" + imgStr + ".xml"
-			singleRevise(currImgLoc, xmlFileLoc)
+			singleRevise(srcImgLoc, dstImgLoc, xmlFileLoc)
 
-singleRevise('','/media/raoby/UnixExt/ILSVRC2012/bnb')
-#ImageRevise( '/media/raoby/UnixExt/ILSVRC2012/train', '/media/raoby/UnixExt/ILSVRC2012/bnb')
+#singleRevise('/media/raoby/UnixExt/ILSVRC2012/TrainingSet/n01440764/n01440764_39.JPEG', '/media/raoby/UnixExt/ILSVRC2012/train/n01440764/n01440764_39.JPEG', '/media/raoby/UnixExt/ILSVRC2012/bnb/n01440764/n01440764_39.xml')
+
+ImageRevise( imgSrcFolder, imgDstFolder, bbFolder)
