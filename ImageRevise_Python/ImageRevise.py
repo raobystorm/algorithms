@@ -8,17 +8,23 @@ bbFolderStr = "BoundingBox"
 width, height = 224, 224
 
 # this is the location of the folder contains image folders
-imgSrcFolder = "/media/raoby/UnixExt/ILSVRC2012/TrainingSet"
+imgSrcFolder = "/media/raoby/UnixExt/ILSVRC2012/trainOriginal"
 # this is the destination of the image files
 imgDstFolder = "/media/raoby/UnixExt/ILSVRC2012/train"
 # this is the location of the folder contians bounding boxes
 bbFolder = "/media/raoby/UnixExt/ILSVRC2012/bnb"
+# this is the location of the folder contains validation images
+valSrcFolder = "/media/raoby/UnixExt/ILSVRC2012/validationOriginal"
+# this is the output of validation images
+valDstFolder = "/media/raoby/UnixExt/ILSVRC2012/validation"
+# this is the location contains the bounding boxes of val set
+valbbFolder = "/media/raoby/UnixExt/ILSVRC2012/valbnb"
 
 def singleRevise(imgSrcLoc, imgDstLoc, xmlFileLoc):
 	# The function is used for revise single image
 	# @param {imgLoc} the location of target image
+	# @param {imgDstLoc} the location of output images
 	# @param {xmlFileLoc} the location of the bounding box of current image
-	# @return {errMsg} the results of the execution
 	xmin, xmax, ymin, ymax = 0, 0, 0, 0
 	currImg = Image.open(imgSrcLoc);
 	if currImg is not None:
@@ -60,8 +66,8 @@ def singleRevise(imgSrcLoc, imgDstLoc, xmlFileLoc):
 def ImageRevise(imgSrcFolder, imgDstFolder, bbFolderLoc):
 	# The function for all image pre-process
 	# @param {imgSrcFolder} the string of folder contains all the folders of all classes
+	# @param {imgDstLoc} the location of output images
 	# @param {bbFolderLoc} the string of folder contains all the xml files for bouding boxes
-	# @return {errMsg} the results of the function or the exceptions
 	count = 0
 	for folder in os.listdir(imgSrcFolder):
 		count = count + 1
@@ -78,6 +84,22 @@ def ImageRevise(imgSrcFolder, imgDstFolder, bbFolderLoc):
 			xmlFileLoc = bbFolderLoc + "/" + folder + "/" + imgStr + ".xml"
 			singleRevise(srcImgLoc, dstImgLoc, xmlFileLoc)
 
+def TestSetRevise(imgSrcFolder, imgDstFolder, bbFolderLoc):
+	# The function for all image pre-process
+	# @param {imgSrcFolder} the string of folder contains the validation images
+	# @param {imgDstLoc} the location of output images
+	# @param {bbFolderLoc} the string of folder contains all the xml files for bouding boxes
+	print "Processing the validation set..."
+	for imgStr in os.listdir(imgSrcFolder):
+		imgStr = imgStr[0:imgStr.rfind(".")]
+		srcImgLoc = imgSrcFolder + "/" + imgStr + ".JPEG"
+		dstImgLoc = imgDstFolder + "/" + imgStr + ".JPEG"
+		xmlFileLoc = bbFolderLoc + "/" + imgStr + ".xml"
+		singleRevise(srcImgLoc, dstImgLoc, xmlFileLoc)
+
+
 #singleRevise('/media/raoby/UnixExt/ILSVRC2012/TrainingSet/n01440764/n01440764_39.JPEG', '/media/raoby/UnixExt/ILSVRC2012/train/n01440764/n01440764_39.JPEG', '/media/raoby/UnixExt/ILSVRC2012/bnb/n01440764/n01440764_39.xml')
 
-ImageRevise( imgSrcFolder, imgDstFolder, bbFolder)
+#ImageRevise( imgSrcFolder, imgDstFolder, bbFolder)
+
+TestSetRevise(valSrcFolder, valDstFolder, valbbFolder)
