@@ -100,6 +100,6 @@ def TestSetRevise(imgSrcFolder, imgDstFolder, bbFolderLoc):
 
 #singleRevise('/media/raoby/UnixExt/ILSVRC2012/TrainingSet/n01440764/n01440764_39.JPEG', '/media/raoby/UnixExt/ILSVRC2012/train/n01440764/n01440764_39.JPEG', '/media/raoby/UnixExt/ILSVRC2012/bnb/n01440764/n01440764_39.xml')
 
-#ImageRevise( imgSrcFolder, imgDstFolder, bbFolder)
+ImageRevise( imgSrcFolder, imgDstFolder, bbFolder)
 
 TestSetRevise(valSrcFolder, valDstFolder, valbbFolder)
