@@ -8,27 +8,22 @@
 
 using namespace std;
 
-vector<int> TwoSum(vector<int>& numbers, int target){
+vector<int> twoSum(vector<int>& numbers, int target){
 
+	// For a number n, map (target-n) to the indice of n.
 	unordered_map<int, int> hash(0);
 	vector<int> res;
-	
-	for (int i = 1; i <= numbers.size(); i++){
 
-		if (hash[target - numbers[i - 1]] != 0){
-
-			if (i < hash[target - numbers[i - 1]]){
-				res.push_back(i);
-				res.push_back(hash[target - numbers[i - 1]]);
-			}
-			else{
-				res.push_back(hash[target - numbers[i - 1]]);
-				res.push_back(i);
-			}
+	for (int i = 0; i < numbers.size(); i++) {
+		if (hash.find(numbers[i]) != hash.end()) {
+			res.push_back(hash[numbers[i]]);
+			res.push_back(i);
 			return res;
+		} else {
+			hash[target - numbers[i]] = i;
 		}
-		hash[numbers[i-1]] = i;
 	}
+	return res;
 }
 
 int main()
@@ -53,7 +48,7 @@ int main()
 
 		input >> target;
 
-		res = TwoSum(nums, target);
+		res = twoSum(nums, target);
 
 		output << res[0] << " " << res[1] << endl;
 	}
