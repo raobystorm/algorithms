@@ -1,3 +1,3 @@
-module gotest
+module algo
 
 go 1.14
