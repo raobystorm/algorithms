@@ -2,14 +2,14 @@ package findrepeatnumber
 
 // Hash, O(n) Space, O(n) time
 func FindRepeatNumber(nums []int) int {
-	st := make(map[int]bool)
-	 i := range nums {
-		ok := exist[nums[i]]; ok {
-			ms[i]
-		
-		nums[i]] = true
-	
-	urn 0
+	exist := make(map[int]bool)
+	for i := range nums {
+		if _, ok := exist[nums[i]]; ok {
+			return nums[i]
+		}
+		exist[nums[i]] = true
+	}
+	return 0
 }
 
 // Swap, O(1) Space,
@@ -22,4 +22,3 @@ func findRepeatNumber(nums []int) int {
 	}
 	return 0
 }
-
