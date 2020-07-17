@@ -1,3 +1,3 @@
 package isnumber
 
-FXXK THIS SHIT PROBLEM
+// FXXK THIS SHIT PROBLEM
