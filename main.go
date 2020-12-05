@@ -1,8 +1,8 @@
 package main
 
 import (
+	tst "algo/maxarraysum"
 	"fmt"
-	tst "gotest/maxarraysum"
 )
 
 func main() {
