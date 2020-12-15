@@ -26,5 +26,5 @@ func makeList(n []int) *ListNode {
 func TestDeleteDuplicats(t *testing.T) {
 	assert := assert.New(t)
 	head := makeList([]int{2,2, 4,4})
-	assert.Equal(deleteDuplicates(head), nil.(*ListNode))
+	assert.Equal(deleteDuplicates(head), nil)
 }
