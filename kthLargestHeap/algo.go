@@ -34,7 +34,6 @@ type KthLargest struct {
     k int
 }
 
-
 func Constructor(k int, nums []int) KthLargest {
     kk := KthLargest{
         h: &IntHeap{},
