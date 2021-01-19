@@ -34,7 +34,8 @@ func (h PairHeap) Top() int {
 func (h PairHeap) GetRes() [][]int{
 	res := make([][]int, len(h))
 	for i := range h {
-		res[i] = []int{h[i].m, h[i].n}
+		p := heap.Pop(&h).(Pair)
+		res[len(res) - 1 - i] = []int{p.n, p.m}
 	}
 	return res
 }
@@ -48,8 +49,12 @@ func kSmallestPairs(nums1 []int, nums2 []int, k int) [][]int {
 				heap.Push(h, Pair{nums1[i], nums2[j]})
 				continue
 			}
-			if h.Top()
+			if h.Top() < nums1[i] + nums2[j] {
+				continue
+			}
+			heap.Push(h, Pair{nums1[i], nums2[j]})
+			heap.Pop(h)
 		}
 	}
-	return 
+	return h.GetRes()
 }
