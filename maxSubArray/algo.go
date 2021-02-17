@@ -1,36 +1,26 @@
 package maxsubarray
 
-func maxSubArray(n []int) int {
-    prev := n[0]
-    max := -101
-    for i := 1; i < len(n); i++ {
-        if n[i] > 0 {
-            // When current is positive
-            if prev > 0 {
-                prev += n[i]
-            } else {
-                prev = n[i]
-            }
-        } else if n[i] < 0 {
-            if prev > max {
-                max = prev
-			}
-			if prev + n[i] > 0 {
-                // if a small negtive, accept it
-				prev += n[i]
-			} else {
-                // else prev should be negtive
-				prev = n[i]
-			}
-        } else {
-            // When 0 consider prev < 0
-			if prev < 0 {
-				prev = 0
-			}
+func maxSubArray(nums []int) int {
+	if len(nums) == 1 {
+		return nums[0]
+	}
+
+	sum := nums[0]
+	max := sum
+	i := 1
+	for i < len(nums) {
+		if sum < 0 {
+			// if previous sum is negative, just start a new sub sequence
+			sum = nums[i]
+		} else {
+			// otherwise add sum up
+			sum += nums[i]
 		}
-    }
-    if prev > max {
-        max = prev
-    }
-    return max
+		// update max if sum is larger
+		if sum > max {
+			max = sum
+		}
+		i++
+	}
+	return max
 }

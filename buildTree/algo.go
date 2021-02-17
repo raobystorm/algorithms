@@ -7,22 +7,26 @@ type TreeNode struct {
 }
 
 func buildTree(preorder []int, inorder []int) *TreeNode {
-
-	if len(preorder) == 0 || len(inorder) == 0 {
+	if len(preorder) == 0 {
 		return nil
 	}
 
 	root := preorder[0]
-	i := 0
-	for ; i < len(inorder); i++ {
-		if inorder[i] == root {
+	lIdx := 0
+	for lIdx < len(preorder) {
+		if inorder[lIdx] == root {
 			break
 		}
+		lIdx++
 	}
 
-	return &TreeNode{
-		Val:   root,
-		Left:  buildTree(preorder[1:i+1], inorder[:i]),
-		Right: buildTree(preorder[i+1:], inorder[i+1:]),
+	var lNode, rNode *TreeNode
+	if lIdx > 0 {
+		lNode = buildTree(preorder[1:lIdx+1], inorder[:lIdx])
 	}
+	if lIdx+1 < len(preorder) {
+		rNode = buildTree(preorder[lIdx+1:], inorder[lIdx+1:])
+	}
+
+	return &TreeNode{root, lNode, rNode}
 }
