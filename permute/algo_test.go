@@ -5,6 +5,6 @@ import (
 	"testing"
 )
 
-func Test(t *testing.T) {
+func TestSolution(t *testing.T) {
 	fmt.Println(permute([]int{1, 2, 3}))
 }

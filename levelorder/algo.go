@@ -6,23 +6,48 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func levelOrder(root *TreeNode) []int {
-	if root == nil {
-		return []int{}
-	}
+// 给你一个二叉树，请你返回其按 层序遍历 得到的节点值。 （即逐层地，从左到右访问所有节点）。
 
-	res := []int{}
-	curr := []*TreeNode{root}
-	var node *TreeNode
-	for len(curr) > 0 {
-		node, curr = curr[0], curr[1:]
-		res = append(res, node.Val)
-		if node.Left != nil {
-			curr = append(curr, node.Left)
+// 示例：
+// 二叉树：[3,9,20,null,null,15,7],
+
+//     3
+//    / \
+//   9  20
+//     /  \
+//    15   7
+// 返回其层序遍历结果：
+
+// [
+//   [3],
+//   [9,20],
+//   [15,7]
+// ]
+
+// 来源：力扣（LeetCode）
+// 链接：https://leetcode-cn.com/problems/binary-tree-level-order-traversal
+// 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+
+func levelOrder(root *TreeNode) [][]int {
+	if root == nil {
+		return [][]int{}
+	}
+	queue := []*TreeNode{root}
+	res := [][]int{}
+	for len(queue) != 0 {
+		next := []*TreeNode{}
+		curr := []int{}
+		for i := range queue {
+			curr = append(curr, (*queue[i]).Val)
+			if queue[i].Left != nil {
+				next = append(next, queue[i].Left)
+			}
+			if queue[i].Right != nil {
+				next = append(next, queue[i].Right)
+			}
 		}
-		if node.Right != nil {
-			curr = append(curr, node.Right)
-		}
+		res = append(res, curr)
+		queue = next
 	}
 	return res
 }
