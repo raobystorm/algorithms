@@ -1,37 +1,40 @@
 package testgo
 
-type ImmutableStack struct {
+type ListNode struct {
 	Val  int
-	Prev *ImmutableStack
+	Next *ListNode
 }
 
-func NewImmutableStack(val int) ImmutableStack {
-	return ImmutableStack{
-		val,
-		nil,
+func getIntersectionNode(a, b *ListNode) *ListNode {
+	headA, headB := a, b
+	for a != nil && b != nil {
+		if a == b {
+			return a
+		}
+		a = a.Next
+		b = b.Next
 	}
-}
-
-func (stk ImmutableStack) Push(val int) ImmutableStack {
-	return ImmutableStack{
-		val,
-		&stk,
+	if a == nil && b == nil {
+		return nil
 	}
-}
-
-func (stk ImmutableStack) Pop() ImmutableStack {
-	return *stk.Prev
-}
-
-func (stk ImmutableStack) Top() int {
-	return stk.Val
-}
-
-func (stk *ImmutableStack) PrintAll() []int {
-	res := []int{}
-	for stk != nil {
-		res = append(res, (*stk).Val)
-		stk = stk.Prev
+	var fast, slow, next *ListNode
+	if a == nil {
+		fast, slow = headB, b
+		next = headA
+	} else {
+		fast, slow = headA, a
+		next = headB
 	}
-	return res
+	for fast != nil {
+		if fast == slow {
+			return fast
+		}
+		if slow.Next == nil {
+			slow = next
+		} else {
+			slow = slow.Next
+		}
+		fast = fast.Next
+	}
+	return nil
 }

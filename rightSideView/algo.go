@@ -29,15 +29,12 @@ func rightSideView(root *TreeNode) []int {
 		return []int{}
 	}
 
-	left, right := []int{}, []int{}
-	if root.Right != nil {
-		right = rightSideView(root.Right)
-	}
-	if root.Left != nil {
-		left = rightSideView(root.Left)
-	}
+	left := rightSideView(root.Left)
+	right := rightSideView(root.Right)
+
 	if len(left) > len(right) {
-		right = append(right, left[len(right):]...)
+		copy(left, right)
+		right = left
 	}
 	return append([]int{root.Val}, right...)
 }
