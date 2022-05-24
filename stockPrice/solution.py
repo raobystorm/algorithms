@@ -59,7 +59,7 @@ class StockPrice:
     def __init__(self):
         self.prices = dict()
         self.curr_timestamp = 0
-        self.arr = []
+        self.arr = []  # use a sorted array to help binary search
 
     def update(self, timestamp: int, price: int) -> None:
         self.curr_timestamp = max(self.curr_timestamp, timestamp)
