@@ -1,17 +1,14 @@
 from copy import deepcopy
 from random import sample
 from typing import Tuple
+from dataset import ClassificationDataset
 
 import matplotlib.pyplot as plt
 import numpy as np
 
 
 class KMeans:
-    def __init__(
-        self,
-        n_clus: int,
-        max_iter: int = 300
-    ):
+    def __init__(self, n_clus: int, max_iter: int = 300):
         # max_iter == -1 means loop until converge
         assert max_iter >= -1
         self.n_clus = n_clus
@@ -42,8 +39,7 @@ class KMeans:
 
         # Initialize with random nodes as centeroid
         self.nodes = X
-        self.clu_centers = self.nodes[sample(
-            range(self.nodes.shape[0]), self.n_clus)]
+        self.clu_centers = self.nodes[sample(range(self.nodes.shape[0]), self.n_clus)]
 
         n_iter = 0
         prev_centers = deepcopy(self.clu_centers)
@@ -60,18 +56,14 @@ class KMeans:
         return self.clu_ids, self.clu_centers
 
 
-dataset = np.concatenate((
-    np.random.normal(10, 6, size=(50, 2)),
-    np.random.normal(50, 7, size=(50, 2)),
-    np.random.normal(80, 4, size=(50, 2)),
-), axis=0)
+dataset = ClassificationDataset()
 
 kmeans = KMeans(3, -1)
-kmeans.fit(dataset)
+kmeans.fit(dataset.dataset)
 
 markers = ["+", "*", "o"]
-colors = ['r', 'b', 'g']
+colors = ["r", "b", "g"]
 for i in range(3):
-    p = dataset[kmeans.clu_ids == i]
+    p = dataset.dataset[kmeans.clu_ids == i]
     plt.scatter(p[:, 0], p[:, 1], marker=markers[i], color=colors[i])
 plt.show()
